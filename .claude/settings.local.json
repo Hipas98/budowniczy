@@ -16,7 +16,8 @@
       "Bash(pip3 install *)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8504)",
       "Bash(pkill -f \"streamlit run\")",
-      "Bash(python3 *)"
+      "Bash(python3 *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8505)"
     ]
   }
 }

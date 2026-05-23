@@ -3,7 +3,7 @@
   "class": "Builder",
   "class_icon": "🔨",
   "level": 4,
-  "xp": 600,
+  "xp": 780,
   "xp_to_next_level": 1000,
   "stats": {
     "logika": 5,
@@ -20,7 +20,7 @@
     "GitHub 🐙"
   ],
   "active_project": "tygodniowy-planner-3zmianowca",
-  "sprints_completed": 0,
+  "sprints_completed": 4,
   "deploys": 1,
   "commits": 2,
   "started": "2026-05-21"
