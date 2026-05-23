@@ -1,4 +1,7 @@
 import streamlit as st
+from fpdf import FPDF
+from fpdf.enums import XPos, YPos
+from datetime import date
 
 st.set_page_config(page_title="Planner 3-zmianowca", page_icon="📅", layout="centered")
 
@@ -45,6 +48,63 @@ ZMIANY = {
     },
 }
 
+_ZAMIANA = {
+    "ą": "a", "ć": "c", "ę": "e", "ł": "l", "ń": "n",
+    "ó": "o", "ś": "s", "ź": "z", "ż": "z",
+    "Ą": "A", "Ć": "C", "Ę": "E", "Ł": "L", "Ń": "N",
+    "Ó": "O", "Ś": "S", "Ź": "Z", "Ż": "Z",
+    "–": "-", "—": "-",
+    "“": '"', "”": '"',
+    "‘": "'", "’": "'",
+}
+
+
+def _ascii(text: str) -> str:
+    for stary, nowy in _ZAMIANA.items():
+        text = text.replace(stary, nowy)
+    return text
+
+
+def generuj_pdf(zmiana: str, dane: dict, zadania: list) -> bytes:
+    pdf = FPDF()
+    pdf.add_page()
+
+    pdf.set_font("Helvetica", style="B", size=18)
+    pdf.cell(0, 12, "Plan tygodnia", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+    pdf.set_font("Helvetica", size=11)
+    pdf.set_text_color(100, 100, 100)
+    pdf.cell(0, 8, f"Data: {date.today().strftime('%d.%m.%Y')}", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.ln(4)
+
+    pdf.set_text_color(0, 0, 0)
+    pdf.set_font("Helvetica", style="B", size=13)
+    zmiana_czysta = _ascii(zmiana.encode("ascii", "ignore").decode().strip())
+    pdf.cell(0, 10, zmiana_czysta, new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.ln(2)
+
+    pdf.set_font("Helvetica", size=11)
+    pdf.cell(0, 8, f"Budzet godzin: ~{dane['godz_tydzien']}h / tydzien", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.cell(0, 8, f"Deep work: {'Tak' if dane['deep_work'] else 'Nie'}", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.ln(4)
+
+    pdf.set_font("Helvetica", style="B", size=12)
+    pdf.cell(0, 8, "Zalecenia na ten tydzien:", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.set_font("Helvetica", size=11)
+    for z in dane["zalecenia"]:
+        pdf.cell(0, 7, f"  - {_ascii(z)}", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+    pdf.ln(4)
+
+    if zadania:
+        pdf.set_font("Helvetica", style="B", size=12)
+        pdf.cell(0, 8, f"Zadania ({len(zadania)}):", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+        pdf.set_font("Helvetica", size=11)
+        for i, z in enumerate(zadania, 1):
+            pdf.cell(0, 7, f"  {i}. {_ascii(z)}", new_x=XPos.LMARGIN, new_y=YPos.NEXT)
+
+    return bytes(pdf.output())
+
+
 st.title("📅 Planner 3-zmianowca")
 st.caption("Planuj tydzień zgodnie z realnym budżetem energii, nie złudzeniami.")
 
@@ -73,6 +133,7 @@ zadania_raw = st.text_area(
     placeholder="zbudować formularz wyboru zmiany\nnaprawić błąd w plannerze\nzrobić commit z opisem",
 )
 
+zadania = []
 if zadania_raw.strip():
     zadania = [z.strip() for z in zadania_raw.strip().splitlines() if z.strip()]
     godz_na_zadanie = round(dane["godz_tydzien"] / len(zadania), 1)
@@ -80,3 +141,13 @@ if zadania_raw.strip():
         f"Masz **{len(zadania)} zadań** na **~{dane['godz_tydzien']}h** → "
         f"średnio **{godz_na_zadanie}h** na zadanie."
     )
+
+st.divider()
+
+pdf_bytes = generuj_pdf(zmiana, dane, zadania)
+st.download_button(
+    label="📄 Pobierz plan jako PDF",
+    data=pdf_bytes,
+    file_name=f"plan-tygodnia-{date.today()}.pdf",
+    mime="application/pdf",
+)
