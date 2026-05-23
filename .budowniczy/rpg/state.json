@@ -2,9 +2,9 @@
   "player": "Damian",
   "class": "Builder",
   "class_icon": "🔨",
-  "level": 2,
-  "xp": 120,
-  "xp_to_next_level": 250,
+  "level": 3,
+  "xp": 510,
+  "xp_to_next_level": 600,
   "stats": {
     "logika": 5,
     "kod": 1,
@@ -21,7 +21,7 @@
   ],
   "active_project": "tygodniowy-planner-3zmianowca",
   "sprints_completed": 0,
-  "deploys": 0,
-  "commits": 1,
+  "deploys": 1,
+  "commits": 2,
   "started": "2026-05-21"
 }

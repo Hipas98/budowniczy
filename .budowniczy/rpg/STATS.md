@@ -5,8 +5,8 @@
 |---|---|
 | **Gracz** | Damian |
 | **Klasa** | Builder 🔨 |
-| **Poziom** | 2 |
-| **XP** | 120 / 250 |
+| **Poziom** | 3 |
+| **XP** | 510 / 600 |
 | **Bonus klasy** | 2x XP za deploy i commit |
 
 ## Statsy
@@ -29,8 +29,8 @@
 **Tygodniowy Planner 3-zmianowca** — `projekty/tygodniowy-planner/`
 
 ## Weekly Boss
-🗡️ **Pierwszy Deploy** — zbuduj i deployuj planner na Streamlit Cloud
-`░░░░░░░░░░` 0%
+✅ **Pierwszy Deploy** — UKOŃCZONY (2026-05-23)
+`██████████` 100%
 
 ## Daily Quests (2026-05-21)
 - [ ] Zrób 1 commit z opisem po polsku (+20 XP)
@@ -39,9 +39,11 @@
 
 ## Achievements
 - 🏗️ **Fundament** — projekt zainicjalizowany *(odblokowane 2026-05-21)*
+- 🚀 **Pierwszy Deploy** — aplikacja live na Streamlit Cloud *(odblokowane 2026-05-23)*
 
 ## Historia poziomów
 | Data | Poziom | Milestone |
 |---|---|---|
 | 2026-05-21 | 1 | Start projektu Budowniczy |
 | 2026-05-23 | 2 | Pierwsza działająca aplikacja + commit |
+| 2026-05-23 | 3 | Pierwszy deploy — aplikacja live |
