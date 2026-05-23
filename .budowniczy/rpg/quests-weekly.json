@@ -1,0 +1,15 @@
+{
+  "week": "2026-05-19 / 2026-05-25",
+  "boss": {
+    "name": "Pierwszy Deploy 🚀",
+    "desc": "Zbuduj i deployuj Tygodniowy Planner 3-zmianowca na Streamlit Cloud. Aplikacja publicznie dostępna pod linkiem, repo publiczne na GitHub z README po polsku.",
+    "xp_reward": 150,
+    "done": false,
+    "criteria": [
+      "Aplikacja działa lokalnie",
+      "Repo publiczne na GitHub",
+      "Deploy na Streamlit Cloud",
+      "README.md z opisem i screenshotem"
+    ]
+  }
+}

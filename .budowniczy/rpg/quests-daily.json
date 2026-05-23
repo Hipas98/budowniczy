@@ -1,0 +1,23 @@
+{
+  "date": "2026-05-21",
+  "quests": [
+    {
+      "id": "q1",
+      "title": "Zrób 1 commit z opisem po polsku",
+      "xp": 20,
+      "done": false
+    },
+    {
+      "id": "q2",
+      "title": "Przeczytaj 1 stronę docs.claude.com/claude-code",
+      "xp": 10,
+      "done": false
+    },
+    {
+      "id": "q3",
+      "title": "Napisz jednozdaniowy cel dzisiejszej sesji przed jej rozpoczęciem",
+      "xp": 10,
+      "done": false
+    }
+  ]
+}

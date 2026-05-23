@@ -1,0 +1,27 @@
+{
+  "player": "Damian",
+  "class": "Builder",
+  "class_icon": "🔨",
+  "level": 1,
+  "xp": 50,
+  "xp_to_next_level": 100,
+  "stats": {
+    "logika": 5,
+    "kod": 1,
+    "build_in_public": 0,
+    "niche_knowledge": 2,
+    "token_efficiency": 0
+  },
+  "inventory": [
+    "Claude Code 🔨",
+    "Python 🐍",
+    "Streamlit 📊",
+    "Git 🌿",
+    "GitHub 🐙"
+  ],
+  "active_project": "tygodniowy-planner-3zmianowca",
+  "sprints_completed": 0,
+  "deploys": 0,
+  "commits": 0,
+  "started": "2026-05-21"
+}

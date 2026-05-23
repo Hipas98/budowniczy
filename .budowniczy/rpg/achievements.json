@@ -1,0 +1,43 @@
+{
+  "unlocked": [],
+  "locked": [
+    {
+      "id": "pierwszy_deploy",
+      "name": "Pierwszy Deploy 🚀",
+      "desc": "Deployuj działającą aplikację publicznie",
+      "xp_reward": 100
+    },
+    {
+      "id": "mistrz_skills",
+      "name": "Mistrz Skills 📜",
+      "desc": "Stwórz 3 własne skille",
+      "xp_reward": 75
+    },
+    {
+      "id": "token_saver",
+      "name": "Token Saver 💎",
+      "desc": "Użyj subagenta zamiast ładować cały plik do kontekstu",
+      "xp_reward": 50
+    },
+    {
+      "id": "build_in_public_7",
+      "name": "Build in Public Day 7 📢",
+      "desc": "7 publicznych commitów z opisem w ciągu 7 dni",
+      "xp_reward": 80
+    },
+    {
+      "id": "pierwszy_inbound",
+      "name": "Pierwszy Inbound DM 📨",
+      "desc": "Ktoś sam napisał że chce podobne narzędzie",
+      "xp_reward": 200
+    },
+    {
+      "id": "struktura_gotowa",
+      "name": "Fundament 🏗️",
+      "desc": "Projekt Budowniczy zainicjalizowany ze strukturą, RPG i pierwszymi Skills",
+      "xp_reward": 50,
+      "unlocked": true,
+      "unlocked_date": "2026-05-21"
+    }
+  ]
+}
