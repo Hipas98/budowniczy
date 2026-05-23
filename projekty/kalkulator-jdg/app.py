@@ -166,10 +166,10 @@ div[data-testid="stSlider"] > label {
     letter-spacing: 0.1em;
     margin-bottom: 14px;
 }
-.compare-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
+.compare-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     margin-bottom: 28px;
 }
 .ccard {
@@ -206,7 +206,14 @@ div[data-testid="stSlider"] > label {
     letter-spacing: -0.02em;
     line-height: 1;
 }
-.ccard-period { font-size: 12px; color: #64748B; margin-top: 2px; margin-bottom: 12px; }
+.ccard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+}
+.ccard-period { font-size: 12px; color: #64748B; margin-top: 4px; }
+.ccard-rows { border-top: 1px solid #1E3A5F; padding-top: 12px; }
 .ccard-row {
     display: flex;
     justify-content: space-between;
@@ -341,25 +348,33 @@ st.markdown(f"""
 # ── PORÓWNANIE ────────────────────────────────────────────────────────────────
 RANKI = ["🥇 1. miejsce", "🥈 2. miejsce", "🥉 3. miejsce", "4️⃣ 4. miejsce"]
 
-st.markdown('<div class="section-label">Porównanie wszystkich form</div>', unsafe_allow_html=True)
-st.markdown('<div class="compare-grid">', unsafe_allow_html=True)
-
+# Wszystkie karty w JEDNYM st.markdown() — inaczej Streamlit wrapuje każdą
+# w osobny div i gap/grid nie widzi bezpośrednich dzieci.
+karty_html = '<div class="section-label">Porównanie wszystkich form</div>'
+karty_html += '<div class="compare-list">'
 for i, w in enumerate(wyniki):
     kolor = KOLORY.get(w["forma"], "#64748B")
-    st.markdown(f"""
+    karty_html += f"""
     <div class="ccard">
         <div class="ccard-accent" style="background:{kolor}"></div>
-        <div class="ccard-rank">{RANKI[i]}</div>
-        <div class="ccard-name">{w['forma']}</div>
-        <div class="ccard-netto">{w['netto']/12:,.0f} zł</div>
-        <div class="ccard-period">/ miesiąc &nbsp;·&nbsp; {w['efektywna']:.1f}% obciążenia</div>
-        <div class="ccard-row">Podatek dochodowy <span>{w['podatek']:,.0f} zł/rok</span></div>
-        <div class="ccard-row">ZUS <span>{w['zus']:,.0f} zł/rok</span></div>
-        <div class="ccard-row">Zdrowotna <span>{w['zdrowotna']:,.0f} zł/rok</span></div>
-    </div>
-    """, unsafe_allow_html=True)
-
-st.markdown('</div>', unsafe_allow_html=True)
+        <div class="ccard-header">
+            <div>
+                <div class="ccard-rank">{RANKI[i]}</div>
+                <div class="ccard-name">{w['forma']}</div>
+            </div>
+            <div style="text-align:right">
+                <div class="ccard-netto">{w['netto']/12:,.0f} zł</div>
+                <div class="ccard-period">/ miesiąc &nbsp;·&nbsp; {w['efektywna']:.1f}% obciążenia</div>
+            </div>
+        </div>
+        <div class="ccard-rows">
+            <div class="ccard-row">Podatek dochodowy <span>{w['podatek']:,.0f} zł/rok</span></div>
+            <div class="ccard-row">ZUS <span>{w['zus']:,.0f} zł/rok</span></div>
+            <div class="ccard-row">Składka zdrowotna <span>{w['zdrowotna']:,.0f} zł/rok</span></div>
+        </div>
+    </div>"""
+karty_html += '</div>'
+st.markdown(karty_html, unsafe_allow_html=True)
 
 # ── DISCLAIMER ────────────────────────────────────────────────────────────────
 st.markdown("""<div class="disclaimer">
