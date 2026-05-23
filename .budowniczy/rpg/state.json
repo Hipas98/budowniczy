@@ -2,9 +2,9 @@
   "player": "Damian",
   "class": "Builder",
   "class_icon": "🔨",
-  "level": 3,
-  "xp": 560,
-  "xp_to_next_level": 600,
+  "level": 4,
+  "xp": 600,
+  "xp_to_next_level": 1000,
   "stats": {
     "logika": 5,
     "kod": 1,

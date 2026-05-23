@@ -5,16 +5,16 @@
 |---|---|
 | **Gracz** | Damian |
 | **Klasa** | Builder 🔨 |
-| **Poziom** | 3 |
+| **Poziom** | 4 |
 | **Bonus klasy** | 2x XP za deploy i commit |
 
 ## Pasek XP
 
 ```
-Poziom 3                                         Poziom 4
-  |████████████████████████████████░░░░░░░░░░|
-  0                               560       600
-                         560 / 600 XP — 40 do awansu
+Poziom 4                                         Poziom 5
+  |░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░|
+  0                                          1000
+                          600 / 1000 XP — 400 do awansu
 ```
 
 ## Statsy
@@ -59,3 +59,4 @@ Demo: https://budowniczy1.streamlit.app/
 | 2026-05-21 | 1 | 0 | Start projektu Budowniczy |
 | 2026-05-23 | 2 | 120 | Pierwsza działająca aplikacja + commit |
 | 2026-05-23 | 3 | 510 | Pierwszy deploy — aplikacja live |
+| 2026-05-23 | 4 | 600 | RPG sidebar w aplikacji |
