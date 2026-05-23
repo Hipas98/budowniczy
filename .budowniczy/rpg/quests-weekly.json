@@ -4,7 +4,9 @@
     "name": "Pierwszy Deploy 🚀",
     "desc": "Zbuduj i deployuj Tygodniowy Planner 3-zmianowca na Streamlit Cloud. Aplikacja publicznie dostępna pod linkiem, repo publiczne na GitHub z README po polsku.",
     "xp_reward": 150,
-    "done": false,
+    "done": true,
+    "done_date": "2026-05-23",
+    "demo_url": "https://budowniczy1.streamlit.app/",
     "criteria": [
       "Aplikacja działa lokalnie",
       "Repo publiczne na GitHub",

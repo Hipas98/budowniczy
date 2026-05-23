@@ -2,6 +2,10 @@
 
 Prosty planner dla kogoś kto pracuje zmianowo i chce realnie planować czas na projekty poboczne.
 
+## Demo
+
+🚀 **https://budowniczy1.streamlit.app/**
+
 ## Jak uruchomić lokalnie
 
 ```bash

@@ -6,9 +6,9 @@ Buduję publicznie narzędzia z Claude Code. Uczę się przy tym. Dokumentuję w
 
 ## Aktualny projekt
 
-**Tygodniowy Planner 3-zmianowca** — Streamlit app dla kogoś kto pracuje w systemie zmianowym i chce realnie planować czas na projekty poboczne. Zbudowany z Claude Code.
+**[Tygodniowy Planner 3-zmianowca](https://budowniczy1.streamlit.app/)** — Streamlit app dla kogoś kto pracuje w systemie zmianowym i chce realnie planować czas na projekty poboczne. Zbudowany z Claude Code.
 
-> W budowie — śledź commity
+> ✅ Live: https://budowniczy1.streamlit.app/
 
 ## Poprzednie projekty
 

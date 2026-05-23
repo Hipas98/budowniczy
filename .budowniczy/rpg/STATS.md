@@ -5,15 +5,15 @@
 |---|---|
 | **Gracz** | Damian |
 | **Klasa** | Builder 🔨 |
-| **Poziom** | 1 |
-| **XP** | 50 / 100 |
+| **Poziom** | 2 |
+| **XP** | 120 / 250 |
 | **Bonus klasy** | 2x XP za deploy i commit |
 
 ## Statsy
 | Stat | Poziom |
 |---|---|
 | Logika 🧠 | ██░░░░░░░░ 5 |
-| Kod 💻 | █░░░░░░░░░ 1 |
+| Kod 💻 | ███░░░░░░░ 3 |
 | Build-in-Public 📢 | ░░░░░░░░░░ 0 |
 | Niche Knowledge 🎯 | ██░░░░░░░░ 2 |
 | Token Efficiency 💎 | ░░░░░░░░░░ 0 |
@@ -44,3 +44,4 @@
 | Data | Poziom | Milestone |
 |---|---|---|
 | 2026-05-21 | 1 | Start projektu Budowniczy |
+| 2026-05-23 | 2 | Pierwsza działająca aplikacja + commit |
