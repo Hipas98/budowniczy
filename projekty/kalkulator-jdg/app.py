@@ -169,13 +169,13 @@ div[data-testid="stSlider"] > label {
 .compare-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    gap: 24px;
     margin-bottom: 28px;
 }
 .ccard {
     background: #1E293B;
     border-radius: 12px;
-    padding: 20px;
+    padding: 28px 24px;
     border: 1px solid #334155;
     position: relative;
 }
