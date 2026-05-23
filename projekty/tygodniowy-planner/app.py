@@ -1,9 +1,37 @@
+import json
+import os
 import streamlit as st
 from fpdf import FPDF
 from fpdf.enums import XPos, YPos
 from datetime import date
 
 st.set_page_config(page_title="Planner 3-zmianowca", page_icon="📅", layout="centered")
+
+# --- RPG sidebar ---
+STATE_PATH = os.path.join(os.path.dirname(__file__), "..", "..", ".budowniczy", "rpg", "state.json")
+
+with st.sidebar:
+    st.markdown("## 🎮 Budowniczy RPG")
+    try:
+        with open(STATE_PATH) as f:
+            rpg = json.load(f)
+        poziom = rpg["level"]
+        xp = rpg["xp"]
+        xp_next = rpg["xp_to_next_level"]
+        postep = xp / xp_next
+        st.markdown(f"**{rpg['class_icon']} {rpg['class']}** — Poziom {poziom}")
+        st.progress(postep, text=f"{xp} / {xp_next} XP")
+        st.caption(f"Do awansu: {xp_next - xp} XP")
+        st.divider()
+        st.markdown("**Statsy**")
+        statsy = rpg["stats"]
+        for nazwa, war in [("Logika 🧠", statsy["logika"]),
+                           ("Kod 💻", statsy["kod"]),
+                           ("Build-in-Public 📢", statsy["build_in_public"]),
+                           ("Token Efficiency 💎", statsy["token_efficiency"])]:
+            st.progress(war / 10, text=f"{nazwa}  {war}/10")
+    except FileNotFoundError:
+        st.caption("state.json nie znaleziony")
 
 ZMIANY = {
     "🟢 Popołudniówka (14–22) — najlepszy tydzień": {
