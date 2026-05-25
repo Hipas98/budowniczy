@@ -1,5 +1,7 @@
 import streamlit as st
 
+from generator import generate_diagnosis
+
 
 st.set_page_config(page_title="Diagnoza marketingowa", page_icon="📋", layout="centered")
 
@@ -351,15 +353,38 @@ def step_5():
 
 
 def step_6():
-    st.success("✅ Formularz wypełniony — trwa przygotowanie diagnozy")
-    st.info("Tu będzie generowanie raportu diagnostycznego — zostanie zbudowane w Etapie 3.")
-    st.json(st.session_state.data)
+    st.subheader("📋 Twoja diagnoza marketingowa")
 
-    if st.button("Wypełnij ponownie", type="primary"):
-        st.session_state.step = 1
-        st.session_state.data = {}
-        st.session_state.report = None
-        st.rerun()
+    # Generuj raport tylko raz — zapisz w session_state
+    if st.session_state.report is None:
+        with st.spinner("Analizuję Twój biznes… to chwilę potrwa"):
+            try:
+                st.session_state.report = generate_diagnosis(st.session_state.data)
+            except ValueError as e:
+                st.error(f"Błąd konfiguracji: {e}")
+                return
+            except Exception as e:
+                st.error(f"Nie udało się wygenerować diagnozy: {e}")
+                return
+
+    st.markdown(st.session_state.report)
+
+    st.divider()
+
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("🔄 Wypełnij ponownie", type="secondary"):
+            st.session_state.step = 1
+            st.session_state.data = {}
+            st.session_state.report = None
+            st.rerun()
+    with col2:
+        st.download_button(
+            label="⬇️ Pobierz diagnozę (.txt)",
+            data=st.session_state.report,
+            file_name="diagnoza-marketingowa.txt",
+            mime="text/plain",
+        )
 
 
 STEPS = {
