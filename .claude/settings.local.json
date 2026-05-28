@@ -57,7 +57,11 @@
       "Bash(node *)",
       "Bash(lsof *)",
       "Bash(venv/bin/streamlit run *)",
-      "Bash(/Users/damianmanski/Documents/ClaudeCode/Fenix/projekty/diagnoza-marketingowa/venv/bin/streamlit run *)"
+      "Bash(/Users/damianmanski/Documents/ClaudeCode/Fenix/projekty/diagnoza-marketingowa/venv/bin/streamlit run *)",
+      "Skill(update-config)",
+      "Bash(chmod +x /Users/damianmanski/Documents/ClaudeCode/Fenix/.claude/auto-push.sh)",
+      "Bash(bash .claude/auto-push.sh)",
+      "Bash(echo \"exit: $?\")"
     ]
   }
 }
