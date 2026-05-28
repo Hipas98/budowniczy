@@ -1,16 +1,16 @@
 {
   "player": "Damian",
-  "class": "Builder",
-  "class_icon": "🔨",
-  "level": 4,
-  "xp": 780,
-  "xp_to_next_level": 1000,
+  "class": "Solo Marketer",
+  "class_icon": "📣",
+  "level": 5,
+  "xp": 290,
+  "xp_to_next_level": 500,
   "stats": {
-    "logika": 5,
-    "kod": 1,
-    "build_in_public": 0,
-    "niche_knowledge": 2,
-    "token_efficiency": 0
+    "logika": 8,
+    "copywriting": 3,
+    "build_in_public": 1,
+    "media_buying": 3,
+    "niche_knowledge": 8
   },
   "inventory": [
     "Claude Code 🔨",
@@ -19,7 +19,8 @@
     "Git 🌿",
     "GitHub 🐙"
   ],
-  "active_project": "tygodniowy-planner-3zmianowca",
+  "active_project": "nowy-produkt-discovery",
+  "active_direction": "Solo Marketer AI — polskie firmy usługowe",
   "sprints_completed": 4,
   "deploys": 1,
   "commits": 2,

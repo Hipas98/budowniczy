@@ -1,26 +1,69 @@
-# Projekt Budowniczy — AGENTS.md
+# Projekt Fenix — AGENTS.md (Codex)
 
-## Kim jestem
-Damian, Builder 🔨, poziom 1. Buduję narzędzia dla siebie i solo przedsiębiorców z Codex.
-Stack: Python, Streamlit, Git, GitHub, Vercel. Poziom: podstawy → praktyka.
+## Kontekst projektu
 
-## Zasady pracy (konstytucja)
+Budujemy: AI autopilot reputacji dla polskich firm usługowych (opinie Google, widoczność lokalna).
+Owner: Damian — solo marketer, działa z Claude Code (interaktywnie) + Codex (async build).
+Stack: Python, Streamlit → docelowo Flask/FastAPI + frontend, Claude API, Google Business Profile API, SMSAPI.pl.
 
-1. **Zgoda przed działaniem** — przed każdym taskiem: "Proponuję X. Powód: Y. Koszt: ~Z tokenów. Zgoda?"
-2. **Małe iteracje** — każdy sprint max 1-2h, kończy się czymś widocznym (commit, deploy, działająca funkcja)
-3. **Oszczędzaj tokeny** — nie ładuj plików których nie potrzebujesz; używaj subagentów do izolowanych tasków
-4. **Ucz po drodze** — po każdej ważnej decyzji: 2-3 zdania DLACZEGO tak, nie inaczej
-5. **Po polsku zawsze** — kod EN (konwencja), komunikacja + commity + README = PL
+## Zasady dla Codex
 
-## Aktywny projekt
-`projekty/tygodniowy-planner/` — Streamlit app dla 3-zmianowca
+1. **Kod EN, komunikacja PL** — nazwy zmiennych, funkcji, pliki = angielski. Komentarze, commity, README = polski.
+2. **Mały, testowalny output** — każde zadanie kończy się działającym kodem z minimum 1 testem lub manual test instruction.
+3. **Żadnych nowych zależności bez listy** — jeśli dodajesz bibliotekę, wymień ją w PR description z uzasadnieniem.
+4. **Polskie realia** — API, integracje, ceny, przepisy = polska perspektywa. SMS przez SMSAPI.pl (nie Twilio), płatności przez Przelewy24/Stripe PL, faktury przez iFirma API jeśli potrzeba.
+5. **PRO standard** — żadnego placeholder UI, żadnych TODO w kodzie produkcyjnym, żadnych hardcoded secrets.
 
-## RPG
-Stan postaci: `.budowniczy/rpg/STATS.md`
-Klasa: Builder 🔨 | Bonus: 2x XP za deploy i commit
+## Podział pracy: Claude Code vs Codex
+
+### Claude Code robi:
+- Decyzje architektoniczne
+- Planowanie sprintów z Damianem
+- Eksploracja kodu, debugowanie złożonych problemów
+- Code review outputu Codexa
+- Integracja i łączenie modułów
+- Praca z lokalnym środowiskiem i sekretami
+
+### Codex robi:
+- Implementacja dobrze zdefiniowanych modułów (po briefie od Claude Code)
+- Generowanie testów jednostkowych
+- Powtarzalne komponenty (wiele podobnych widoków/endpointów)
+- Refaktor i cleanup wskazanego kodu
+- Dokumentacja techniczna (docstrings, README sekcje)
+
+## Protokół handoff Claude Code → Codex
+
+Przed delegowaniem do Codexa Claude Code przygotowuje brief w formacie:
+
+```
+TASK: [jednozdaniowy opis]
+INPUT: [co Codex dostaje — pliki, dane, kontekst]
+OUTPUT: [co ma zwrócić — plik, funkcja, test]
+CONSTRAINTS: [co NIE wolno zmienić, jakie zależności, polskie realia]
+DONE WHEN: [kryterium akceptacji — jak sprawdzić że działa]
+```
+
+## Aktywny moduł do budowy
+
+**Produkt:** AI autopilot reputacji — QR kod + opinie Google + AI odpowiedzi po polsku.
+
+Moduły w kolejności:
+1. `qr_generator/` — generuje QR kod przekierowujący na wizytówkę Google firmy
+2. `review_fetcher/` — pobiera opinie z Google Business Profile API
+3. `reply_generator/` — Claude API generuje polską odpowiedź na opinię
+4. `sms_sender/` — SMSAPI.pl integracja (plan premium)
+5. `dashboard/` — panel właściciela firmy (Streamlit MVP → Flask docelowo)
+
+## Środowisko
+
+- Python 3.9+
+- venv: `.venv/`
+- Secrets: `.env` (nigdy do repo)
+- Deploy: Streamlit Cloud (MVP) → VPS/Railway (produkcja)
+- Repo: GitHub Hipas98
 
 ## Skróty
-- Skills: `.claude/skills/`
-- Agenty: `.claude/agents/`
+
 - Sprinty: `.budowniczy/sprints/`
-- Research: `docs/research-2026-05.md`
+- Brief do Codexa: `.budowniczy/codex-briefs/`
+- Claude Code context: `CLAUDE.md`
